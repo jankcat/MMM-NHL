@@ -13,11 +13,6 @@ Module.register("MMM-NHL", {
         "POST": "Post-Season"
     },
 
-    season: {
-        "20162017": "2016-17",
-        t: "P"
-    },
-
     states: {
         "1": "SCHEDULED",
         "2": "Pre-Game",
@@ -128,7 +123,13 @@ Module.register("MMM-NHL", {
             text.classList.add("dimmed", "light");
             scores.appendChild(text);
         } else {
-            header.innerHTML = "NHL " + this.modes[this.scores[1].games[0].gameType] + " " + this.season[this.scores[1].games[0].season];
+            var seasonName = "";
+            if (this.scores[1].games[0].season.length === 8) {
+                seasonName = " " + [this.scores[1].games[0].season.slice(0, 4), "-", this.scores[1].games[0].season.slice(6)].join('');
+            } else if (this.scores[1].games[0].season === "t") {
+                seasonName = " P";
+            }
+            header.innerHTML = "NHL " + this.modes[this.scores[1].games[0].gameType] + seasonName;
             scores.appendChild(header);
             var table = document.createElement("table");
             table.classList.add("small", "table");
