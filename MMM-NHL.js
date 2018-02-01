@@ -194,7 +194,7 @@ Module.register("MMM-NHL", {
 
     appendDataRow: function (data, appendTo) {
         //console.log ("data" + JSON.stringify(data));
-        if(!this.config.focus_on || this.config.focus_on.indexOf(data.teams.home.team.id) !== -1 || this.config.focus_on.indexOf(data.teams.away.team.id) !== -1) {
+        if(!this.config.focus_on || this.config.focus_on.indexOf(this.teams[data.teams.home.team.id]) !== -1 || this.config.focus_on.indexOf(this.teams[data.teams.away.team.id]) !== -1) {
             var row = document.createElement("tr");
             row.classList.add("row");
 
