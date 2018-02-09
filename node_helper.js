@@ -41,7 +41,7 @@ module.exports = NodeHelper.create({
             this.getData();
             setInterval(() => {
                 this.getData();
-            }, this.config.reloadInterval);
+            }, this.config.reloadIntervalInUse);
             setInterval(() => {
                 this.fetchOnLiveState();
             }, 60*1000);
